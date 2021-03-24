@@ -1,0 +1,36 @@
+#!/bin/sh
+
+photodir="stream"
+galleryfile="index.html"
+
+bfile="$(sed '/<!-- GB -->/q' $galleryfile )"
+efile="$(sed '1,/<!-- GE -->/d' $galleryfile )"
+
+perfour() {
+  # One out of every five lines:
+  batch="$(awk 'NR == 1 || NR % 5 == 0' - )"
+  # Add the html fluff:
+  list="$(
+    for i in $batch; do
+      base="$(echo "$i" | cut -f 1 -d "." )"
+      printf "\t\t<img src=\"$photodir/$i\" alt=\"$base\">\n"
+    done
+  )"
+  printf "\t<div class=\"column\">\n$list\n\t</div>"
+
+}
+
+all="$(ls -t $photodir)"
+col1="$(echo "$all" | perfour)"
+all="$(echo "$all" | sed '1d' )"
+col2="$(echo "$all" | perfour)"
+all="$(echo "$all" | sed '1d' )"
+col3="$(echo "$all" | perfour)"
+all="$(echo "$all" | sed '1d' )"
+col4="$(echo "$all" | perfour)"
+
+gallery="$(printf "<div class=\"gallery\">\n$col1\n$col2\n$col3\n$col4\n</div>\n<!-- GE -->\n")"
+
+echo "$bfile
+$gallery
+$efile" > index.html

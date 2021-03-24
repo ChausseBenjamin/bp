@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Photo Gallery - Chausse Benjamin</title>
+  </head>
+  <body>
+  <h1>My Photo Gallery</h1>
+  <p>
+  I like taking pictures every once in a while. Enjoy ;)
+  </p>
+
+<!-- GB -->
+<div class="gallery">
+	<div class="column">
+		<img src="stream/_MG_6925.jpg" alt="_MG_6925">
+		<img src="stream/_MG_6909.jpg" alt="_MG_6909">
+	</div>
+	<div class="column">
+		<img src="stream/_MG_6915.jpg" alt="_MG_6915">
+		<img src="stream/_MG_6897.jpg" alt="_MG_6897">
+	</div>
+	<div class="column">
+		<img src="stream/_MG_6922.jpg" alt="_MG_6922">
+		<img src="stream/_MG_6890.jpg" alt="_MG_6890">
+	</div>
+	<div class="column">
+		<img src="stream/_MG_6913.jpg" alt="_MG_6913">
+		<img src="stream/_MG_6888.jpg" alt="_MG_6888">
+	</div>
+</div>
+<!-- GE -->
+
+  </body>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.gallery {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+
+</html>
